@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
 const studentRoute = express.Router();
+
 // Student model
-let Student = require("../database/model/Student");
+let Student = require("../model/student");
+
 // Add Student
 studentRoute.route("/add-student").post((req, res, next) => {
   Student.create(req.body, (error, data) => {
@@ -13,6 +15,7 @@ studentRoute.route("/add-student").post((req, res, next) => {
     }
   });
 });
+
 // Get all student
 studentRoute.route("/").get((req, res) => {
   Student.find((error, data) => {
@@ -23,6 +26,7 @@ studentRoute.route("/").get((req, res) => {
     }
   });
 });
+
 // Get single student
 studentRoute.route("/read-student/:id").get((req, res) => {
   Student.findById(req.params.id, (error, data) => {
@@ -33,6 +37,7 @@ studentRoute.route("/read-student/:id").get((req, res) => {
     }
   });
 });
+
 // Update student
 studentRoute.route("/update-student/:id").put((req, res, next) => {
   Student.findByIdAndUpdate(
@@ -51,6 +56,7 @@ studentRoute.route("/update-student/:id").put((req, res, next) => {
     }
   );
 });
+
 // Delete student
 studentRoute.route("/delete-student/:id").delete((req, res, next) => {
   Student.findByIdAndRemove(req.params.id, (error, data) => {
@@ -63,4 +69,5 @@ studentRoute.route("/delete-student/:id").delete((req, res, next) => {
     }
   });
 });
+
 module.exports = studentRoute;

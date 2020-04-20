@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//define collection and schema
-let Sudent = new Schema(
+// Define collection and schema
+let Student = new Schema(
   {
     student_name: {
       type: String,
@@ -16,7 +16,7 @@ let Sudent = new Schema(
     subjects: {
       type: Array,
     },
-    genre: {
+    gender: {
       type: String,
     },
     dob: {
@@ -27,5 +27,4 @@ let Sudent = new Schema(
     collection: "students",
   }
 );
-
 module.exports = mongoose.model("Student", Student);
