@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const studentRoute = express.Router();
 // Student model
-let Student = require("../model/Student");
+let Student = require("../database/model/Student");
 // Add Student
 studentRoute.route("/add-student").post((req, res, next) => {
   Student.create(req.body, (error, data) => {
